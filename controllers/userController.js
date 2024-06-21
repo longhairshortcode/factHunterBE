@@ -23,12 +23,14 @@ const userController = {
                 name: name,
                 password: hashedPassword,
             });
+            
             if (newUser) {
                 return res.status(200).json({
                     name: newUser.name,
                     email: newUser.email,
                     id: newUser._id,
-                });
+                })
+                console.log("Sign-up successful.");
             }
         } catch (error) {
             console.log(error);

@@ -1,10 +1,10 @@
 const express = require("express")
 const router = express.Router()
-// const flashcardController = require("../controllers/flashcardController.js")
+const flashcardController = require("../controllers/flashcardController.js")
 
 
-//http://localhost:4000/user/login
-router.post("/create", /*flashcardController.create*/)
+//http://localhost:4000/flashcard/createFlashcard
+router.post("/createFlashcard", flashcardController.createFlashcard)
 
 
 

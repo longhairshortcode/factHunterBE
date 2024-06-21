@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const connectDB = require("./configs/connectDB.js")
 const userRouter = require("./routes/user-routes.js")
+const flashcardRouter = require("./routes/flashcard-routes.js")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 //Config
@@ -40,6 +41,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 //Routes
 app.use("/user", userRouter)
+app.use("/flashcard", flashcardRouter)
 
 //Confirm what this was:
 //Listen for port && //Connect to DB
