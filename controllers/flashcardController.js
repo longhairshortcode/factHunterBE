@@ -4,8 +4,9 @@ const flashcardSchema = require("../models/flashcardSchema.js");
 const flashcardController = {
     
     displayCreatedFlashcards: async (req, res) => {
-        try{
+        try{ 
             const {subject, topic, subtopic, userId} = req.query
+            console.log("in the params ", req.params)
             console.log("Received parameters:", { subject, topic, subtopic, userId });
             if (!subject || !topic || !subtopic || !userId){
                 return res.status(400).json({
@@ -34,18 +35,16 @@ const flashcardController = {
     
 
 
-
-
-
-    
     createFlashcard: async (req, res) => {
     try{
+        console.log("arrive here")
         const {subject, topic, subtopic, question, answer, userID} = req.body
         if (!subject || !topic || !subtopic || !question || !answer || !userID){
             return res.status(400).json({
                 message: "All fields required"
             })
         }
+        console.log("this line")
         const newFlashcard = await flashcardSchema.create({
             subject: subject,
             topic: topic,
@@ -54,6 +53,8 @@ const flashcardController = {
             answer: answer,
             userID: userID
         })
+        console.log("this line 2")
+
         if (newFlashcard) {
             console.log("New flashcard created.")
             return res.status(201).json({
@@ -68,8 +69,8 @@ const flashcardController = {
         }
 
     }catch(err){
-        console.log(err);
-        res.status(500).json(err);
+        console.log(err.message);
+        res.status(500).json({prob : err});
     }
   }
 };
