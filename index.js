@@ -34,8 +34,8 @@ app.use(cors(
         credentials: true, 
     }
 ))
-
-//json middleware
+console.log(here you go)
+//json middlewaree
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
