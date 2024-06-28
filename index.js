@@ -43,6 +43,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use("/user", userRouter)
 app.use("/flashcard", flashcardRouter)
 
+
+
 //Confirm what this was:
 //Listen for port && //Connect to DB
 // app.listen(3000, () => {
