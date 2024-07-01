@@ -20,11 +20,11 @@ const flashcardController = {
             if (topic) query.topic = topic;
             if (subtopic) query.subtopic = subtopic;
 
-            const createdFlashcards = await flashcardSchema.find(query);
+            const createdFlashcardsResult = await flashcardSchema.find(query);
 
-            if (createdFlashcards && createdFlashcards.length > 0) {
+            if (createdFlashcardsResult && createdFlashcardsResult.length > 0) {
                 console.log("Here are all the user's flashcards for the requested subject.");
-                return res.status(200).json({ createdFlashcards });
+                return res.status(200).json({ createdFlashcardsResult });
             } else {
                 console.log("No flashcards found");
                 return res.status(404).json({ message: "No flashcards found" });
