@@ -27,7 +27,7 @@ const flashcardController = {
                 return res.status(200).json({ createdFlashcardsResult });
             } else {
                 console.log("No flashcards found");
-                return res.status(404).json({ message: "No flashcards found" });
+                return res.status(200).json({ createdFlashcardsResult: [] });
             }
         } catch (err) {
             console.log(err);
@@ -99,10 +99,9 @@ const flashcardController = {
     // },
     
 
-
     createFlashcard: async (req, res) => {
     try{
-        console.log("arrive here")
+        // console.log("arrive here")
         const {subject, topic, subtopic, question, answer, userID} = req.body
         if (!subject || !topic || !subtopic || !question || !answer || !userID){
             return res.status(400).json({
@@ -142,3 +141,4 @@ const flashcardController = {
 
 
 module.exports = flashcardController;
+

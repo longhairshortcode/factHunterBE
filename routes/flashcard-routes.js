@@ -10,7 +10,7 @@ router.post("/createFlashcard", flashcardController.createFlashcard)
 router.get("/displayCreatedFlashcards/:userId", flashcardController.displayCreatedFlashcards)
 
 //http://localhost:4000/flashcard/displayCreatedFlashcards
-// app.get("/:userId/:topic/:subtopic", flashcardController.displayCreatedFlashcards)
+router.get("/:userId/:topic/:subtopic", flashcardController.displayCreatedFlashcards)
 
 
 
