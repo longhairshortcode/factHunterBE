@@ -6,6 +6,7 @@ const flashcardController = {
         try {
             const { userId } = req.params;
             const { subject, topic, subtopic } = req.query;
+            console.log("This is the req.query: ", req.query)
 
             console.log("Received parameters:", { subject, topic, subtopic, userId });
 
