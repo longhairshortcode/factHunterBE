@@ -7,10 +7,10 @@ const answersResultsController = require("../controllers/answersResultsControlle
 router.post("/saveAnswersResults", answersResultsController.saveAnswersResults)
 
 //http://localhost:4000/answers-results/updateSaveAnswersResults
-router.put("/updateSaveAnswersResults", answersResultsController.updateSaveAnswersResults)
+// router.put("/updateSaveAnswersResults", answersResultsController.updateSaveAnswersResults)
 
 //http://localhost:4000/answers-results/displayAnswersResults
-router.get("/displayAnswersResults/:id", answersResultsController.displayAnswersResults)
+router.get("/displayAnswersResults/:userID", answersResultsController.displayAnswersResults)
 
 
 

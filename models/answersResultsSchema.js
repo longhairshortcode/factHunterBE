@@ -7,7 +7,8 @@ const answersResultsSchema = new mongoose.Schema({
     },
     userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "userSchema"
+        ref: "userSchema",
+        required: true
     }
 })
 
