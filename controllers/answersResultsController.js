@@ -3,8 +3,9 @@ const answersResultsSchema = require("../models/answersResultsSchema.js");
 const answersResultsController = {
     displayAnswersResults: async (req, res) => {
         try {
-            const {savedAnswers, userID} = req.body
-            const displayedAnswersResults = await answersResultsSchema.find(userID)
+            const {userID} = req.body
+            const displayedAnswersResults = await answersResultsSchema.find({userID})
+
             if (displayedAnswersResults){
                 return res.status(200).json({displayedAnswersResults})
                 console.log("This is the displayedAnswersResults: ", displayedAnswersResults )
@@ -38,10 +39,11 @@ const answersResultsController = {
     updateSaveAnswersResults: async (req, res) => {
         try {
             const {savedAnswers, userID} = req.body
-            const updatedSavedAnswersResults = await answersResultsSchema.findOneAndUpdate(...prev,
+            const updatedSavedAnswersResults = await answersResultsSchema.findOneAndUpdate( 
+                {_id: resultID},
             {
                 result : savedAnswers,
-                userID : userID
+    
             })
             console.log("This is updatedSavedAnswersResults: ", updatedSavedAnswersResults)    
         if (updatedSavedAnswersResults){

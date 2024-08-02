@@ -6,8 +6,11 @@ const answersResultsController = require("../controllers/answersResultsControlle
 //http://localhost:4000/answers-results/saveAnswersResults
 router.post("/saveAnswersResults", answersResultsController.saveAnswersResults)
 
+//http://localhost:4000/answers-results/updateSaveAnswersResults
+router.put("/updateSaveAnswersResults", answersResultsController.updateSaveAnswersResults)
+
 //http://localhost:4000/answers-results/displayAnswersResults
-router.get("/displayAnswersResults/:userId", answersResultsController.displayAnswersResults)
+router.get("/displayAnswersResults/:id", answersResultsController.displayAnswersResults)
 
 
 
