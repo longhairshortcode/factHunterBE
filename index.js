@@ -1,6 +1,7 @@
 //Imports (CONSTS for regular js syntax)
 const express = require("express")
 const mongoose = require("mongoose")
+const dotenv = require("dotenv")
 const connectDB = require("./configs/connectDB.js")
 const userRouter = require("./routes/user-routes.js")
 const flashcardRouter = require("./routes/flashcard-routes.js")
@@ -18,7 +19,7 @@ const PORT = process.env.PORT || 4000
 
 
 //CORS middleware library 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"]
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://fact-hunter-fe.vercel.app"]
 //EXPRESS has use method
 app.use(cors(
     {
