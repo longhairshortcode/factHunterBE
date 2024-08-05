@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 4000
 
 
 //CORS middleware library 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://fact-hunter-fe.vercel.app","https://fact-hunter-rg5km09m6-longhairs-projects.vercel.app", "https://fact-hunter-aq3c61use-longhairs-projects.vercel.app"]
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174","https://fact-hunter-rg5km09m6-longhairs-projects.vercel.app"]
 //EXPRESS has use method
 app.use(cors(
     {
