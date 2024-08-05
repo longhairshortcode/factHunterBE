@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 4000
 
 
 //CORS middleware library 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://fact-hunter-fe.vercel.app"]
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://fact-hunter-fe.vercel.app", "https://fact-hunter-aq3c61use-longhairs-projects.vercel.app"]
 //EXPRESS has use method
 app.use(cors(
     {
@@ -36,6 +36,9 @@ app.use(cors(
         credentials: true, 
     }
 ))
+
+// Handle preflight requests
+app.options('*', cors());
 
 //json middlewaree
 app.use(express.json())
