@@ -5,17 +5,6 @@ const answersResultsController = {
     displayAnswersResults: async (req, res) => {
         const { userID } = req.params;
         console.log("RECIEVED userID parameter: ", userID)
-    //     try {
-    //         const savedExists = await answersResultsSchema.findOne({ userID });
-    //         if (savedExists) {
-    //             res.status(200).json({ displayedAnswersResults: savedExists });
-    //         } else {
-    //             res.status(404).json({ message: "No results found" });
-    //         }
-    //     } catch (error) {
-    //         res.status(500).json({ error: error.message });
-    //     }
-    // },
        
         try {
              
@@ -27,34 +16,36 @@ const answersResultsController = {
                 return res.status(200).json({displayedAnswersResults})    
             }else{
                 console.log("No flashcards found");
-                return res.status(404).json({ message: "No results found" }); 
+                return res.status(209).json({ message: "No results found" }); 
             }
 
         } catch (err) {
             console.log(err);
-            return res.status(500).json({ message: "Internal server error" });
+          res.status(500).json({ message: "Internal server error in the display" , problem:err});
         }
     },
     
     saveAnswersResults: async (req, res) => {
         try {
           const { savedAnswers, userID } = req.body;
+          console.log("hay e data" , req.body)
     
           // Find if the document already exists
           let answersResult = await answersResultsSchema.findOne({ userID });
-    
+          console.log("here the answers ", answersResult)
           if (answersResult) {
             // Update existing document
             answersResult.result = savedAnswers;
-            await answersResult.save();
             console.log("This is updatedAnswersResults: ", answersResult);
+            await answersResult.save();
             return res.status(200).json({ message: 'Document updated', data: answersResult });
           } else {
             // Create new document
-            answersResult = new answersResultsSchema({ userID, result: savedAnswers });
-            await answersResult.save();
-            console.log("This is savedAnswersResults: ", answersResult);
-            return res.status(201).json({ message: 'Document created', data: answersResult });
+            const theAnswerResult = new answersResultsSchema({ userID, result: savedAnswers });
+            console.log("here is my data ", theAnswerResult)
+            await theAnswerResult.save();
+            console.log("it reached here ");
+            return res.status(201).json({ message: 'Document created', data: theAnswerResult });
           }
         } catch (err) {
           console.log(err);
@@ -64,44 +55,3 @@ const answersResultsController = {
     };
     
     module.exports = answersResultsController;
-
-//     saveAnswersResults: async (req, res) => {
-//         try {
-//             const {savedAnswers, userID} = req.body
-//             const savedAnswersResults = await answersResultsSchema.create({
-//                 result : savedAnswers,
-//                 userID : userID
-//             })
-//             console.log("This is savedAnswersResults: ", savedAnswersResults)    
-//         if (savedAnswersResults){
-//             return res.status(200).json({savedAnswersResults})
-//         }
-//         } catch (err) {
-//             console.log(err);
-//             return res.status(500).json({ message: "Internal server error" });
-//         }
-//     },
-
-//     updateSaveAnswersResults: async (req, res) => {
-//         try {
-//             const {savedAnswers, userID} = req.body
-//             const updatedSavedAnswersResults = await answersResultsSchema.findOneAndUpdate( 
-//                 {_id: resultID},
-//             {
-//                 result : savedAnswers,
-    
-//             })
-//             console.log("This is updatedSavedAnswersResults: ", updatedSavedAnswersResults)    
-//         if (updatedSavedAnswersResults){
-//             return res.status(200).json({updatedSavedAnswersResults})
-//         }
-//         } catch (err) {
-//             console.log(err);
-//             return res.status(500).json({ message: "Internal server error" });
-//         }
-//     }
-// };
-
-
-// module.exports = answersResultsController;
-

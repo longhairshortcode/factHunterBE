@@ -28,7 +28,7 @@ app.use(cors(
                callback(null, true)     
             }else {
                 callback(new Error(
-                    "origin not allowed by cors policy"
+                    "origin not allowed by cors policy bla bla bla"
                 ))  
             }
         }, 
