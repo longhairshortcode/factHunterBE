@@ -35,17 +35,21 @@ const answersResultsController = {
           console.log("here the answers ", answersResult)
           if (answersResult) {
             // Update existing document
-            answersResult.result = savedAnswers;
-            console.log("This is updatedAnswersResults: ", answersResult);
+            for (let key in savedAnswers) {
+              if (savedAnswers.hasOwnProperty(key)) {
+                answersResult.result[key] = savedAnswers[key];
+              }
+            }
+            console.log("Updated answersResult:", answersResult);
             await answersResult.save();
             return res.status(200).json({ message: 'Document updated', data: answersResult });
           } else {
             // Create new document
-            const theAnswerResult = new answersResultsSchema({ userID, result: savedAnswers });
-            console.log("here is my data ", theAnswerResult)
-            await theAnswerResult.save();
-            console.log("it reached here ");
-            return res.status(201).json({ message: 'Document created', data: theAnswerResult });
+            const newAnswerResult = new answersResultsSchema({ userID, result: savedAnswers });
+            console.log("New data:", newAnswerResult);
+            await newAnswerResult.save();
+            console.log("Document created");
+            return res.status(201).json({ message: 'Document created', data: newAnswerResult });
           }
         } catch (err) {
           console.log(err);
